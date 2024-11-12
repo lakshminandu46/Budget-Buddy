@@ -1,0 +1,75 @@
+<!-- <div class="container-fluid py-3">
+  <h1>Angular Highcharts</h1>
+
+  <div class="row mt-5">
+    <div class="col-6">
+      <div id="chart-gauge"></div>
+    </div>
+    <div class="col-6">
+      <div id="chart-pie"></div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-6">
+      <div id="chart-column"></div>
+    </div>
+    <div class="col-6">
+      <div id="chart-line"></div>
+    </div>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-md-12 col-12 d-flex justify-content-center">
+    <h1>View Expenses</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-12"></div>
+  <div class="col-md-4 col-12">
+    <div class="form-group">
+      <label for="" class="form-label">Select your card <i class="fa-solid fa-caret-down"></i></label>
+      <select
+        class="form-control"
+        name=""
+        id=""
+        [(ngModel)]="selectedCard"
+        (change)="getDetails()"
+      >
+        <!-- <option value="" disabled selected>Please Choose...</option> -->
+        <option *ngFor="let a of myCards" [value]="a.cardNumber">
+          {{ a.cardNumber }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-5 col-12">
+    <table class="table table-bordered" *ngIf="spendings">
+      <tr>
+        <th [ngClass]="getHeaderClass('transactionType')" (click)="sortTable('transactionType')">Spending Type</th>
+        <th  [ngClass]="getHeaderClass('amountSpent')" (click)="sortTable('amountSpent')">Spending Amount</th>
+        <th [ngClass]="getHeaderClass('date')" (click)="sortTable('date')">Spending Date</th>
+      </tr>
+      <tr *ngFor="let card of spendings">
+        <td>{{ card.transactionType }}</td>
+        <td>{{ card.amountSpent }}</td>
+        <td>{{ card.date | date : "dd-MM-YYYY" }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="co col-md-6 col-12" *ngIf="spendings">
+    <ngx-charts-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="single"
+      [legend]="false"
+      [explodeSlices]="false"
+    >
+    </ngx-charts-pie-chart>
+  </div>
+</div>

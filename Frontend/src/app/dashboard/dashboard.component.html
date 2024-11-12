@@ -1,0 +1,165 @@
+<div class="container-fluid">
+  <div class="row">
+    <div>
+      <h1>Welcome {{ username }}</h1>
+      <br />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-12 col-xl-3">
+        <div class="card bg-c-blue order-card">
+            <div class="card-block">
+                <h6 class="m-b-20">Amount</h6>
+                <h2 class="text-right"><img src="assets/images/rupee.png" class="f-left" height="30" width="30" alt=""> <span>{{totalSalary}}</span></h2>
+                <p class="m-b-0" style="margin-left: 20px;">Total Spendings</p>
+               
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-12 col-xl-3">
+        <div class="card bg-c-green order-card">
+            <div class="card-block">
+                <h6 class="m-b-20">Cards</h6>
+                <h2 class="text-right"> <img src="assets/images/credit.png" class="f-left" height="50" width="50" alt=""> <span>{{cardlen}}</span></h2>
+                <p class="m-b-0">Total Cards</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-12 col-xl-3">
+        <div class="card bg-c-yellow order-card">
+            <div class="card-block">
+                <h6 class="m-b-20">Transactions</h6>
+                <h2 class="text-right"><img src="assets/images/trans.webp" class="f-left" height="50" width="50" alt=""><span>{{expenseslen}}</span></h2>
+                <p class="m-b-0">Total Transactions</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-pink order-card">
+            <div class="card-block">
+                <h6 class="m-b-20">Rewards</h6>
+                <h2 class="text-right"><img src="assets/images/rewards.png" class="f-left" height="50" width="50" alt=""><span>{{userDetails.rewards}}</span></h2>
+                <p class="m-b-0">Reward Points</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- <div class="row">
+    
+      <div class="col-md-3">
+        <div class="card tr1">
+          <div calss="card-header ">
+            <h1 class="p-2 text-white">
+              Jan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="fa-solid fa-dollar-sign fa-flip"></i>
+              <h5 class="p-2 text-white">
+               Total Spending {{janamount|currency:'INR'}}
+              </h5>
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card tr1">
+          <div calss="card-header ">
+            <h1 class="p-2 text-white">
+              Feb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="fa-solid fa-dollar-sign fa-flip"></i>
+              <h5 class="p-2 text-white">
+                TotalSpendings {{febamount|currency:'INR'}}
+              </h5>
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mt-5">
+        <a  routerLink="/navbar/expencetracking">View More</a>
+      </div>
+    </div> -->
+  
+   
+  </div>
+
+  <div class="mydiv" *ngIf="myCards.length!=0">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-5" *ngFor="let card of myCards;index as i">
+            <div *ngIf="i<2">
+              <div class="col-md-12" >
+              
+                <div class="cardscontainer">
+                  <div class="containerd">
+                    <header>
+                  
+                      <span class="logo">
+                        <img src="assets/images/logo.png" alt="" />
+                        <h5>Master Card</h5>
+                      </span>
+                      <img src="assets/images/chip.png" alt="" class="chip" />
+                    </header>
+                    <div class="containerd">
+                      <div *ngIf="!card.updatable">
+                        <div class="card-details">
+                          <div class="name-number">
+                            <h6>Card Number</h6>
+                            <h5 class="number">{{ card.cardNumber }}</h5>
+                            <h5 class="name">{{ card.cardholderName }}</h5>
+                          </div>
+                          <div class="cvv">
+                            <h6>CVV</h6>
+                            <h5>{{ card.cvv }}</h5>
+                          </div>
+                          <div class="valid-date">
+                            <h6>Valid Thru</h6>
+                            <h5>{{ card.expirationDate }}</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+            </div>
+        
+          </div>
+          <div class="mya">
+            <a  routerLink="/navbar/cards">View More</a>
+          </div>
+    </div>
+      </div>
+     
+    </div>
+    
+  </div>
+  
+
+<br />
+<figure class="highcharts-figure" *ngIf="myCards.length!=0">
+  <div id="container"></div>
+  <p class="highcharts-description">
+    Chart with buttons to modify options, showing how options can be changed on
+    the fly. This flexibility allows for more dynamic charts.
+  </p>
+  <button id="plain" (click)="updateChart('plain')" class="btn bg text-white">
+    Plain</button
+  >&nbsp;
+  <button
+    id="inverted"
+    (click)="updateChart('inverted')"
+    class="btn bg1 text-white"
+  >
+    Inverted</button
+  >&nbsp;
+  <!-- <button id="polar" (click)="updateChart('polar')" class="btn bg text-white">
+    Polar
+  </button> -->
+</figure>
+<br />

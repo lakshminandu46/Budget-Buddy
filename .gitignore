@@ -1,0 +1,9 @@
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/tasks.json
+Frontend/node_modules
+backend/node_modules
+Frontend/.angular
+Frontend/.vscode
+backend/node_modules/
+package-lock.json
